@@ -1,0 +1,107 @@
+.completed-session-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.completed-session-table th, .completed-session-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.completed-session-table th {
+    background-color: #007bff; /* Couleur bleue pour les en-têtes */
+    color: #fff; /* Texte en blanc pour les en-têtes */
+}
+
+.completed-session-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Couleur de fond gris pour les lignes paires */
+}
+
+.completed-session-table tbody tr:hover {
+    background-color: #ddd; /* Couleur de fond gris clair lors du survol */
+}
+
+.completed-session-table tbody tr td:last-child {
+    text-align: center;
+}
+/* CSS pour la zone de filtrage */
+.filter-container {
+    display: flex;
+    align-items: center; /* Aligne les éléments au centre verticalement */
+    margin-bottom: 10px; /* Espace entre la zone de filtrage et le tableau */
+    padding: 10px; /* Espace autour de la zone de filtrage */
+    background-color: #f5f5f5; /* Fond gris clair pour mettre en valeur la zone de filtrage */
+    border-radius: 5px; /* Bordures arrondies */
+}
+
+/* CSS pour le champ de date */
+input[type="date"] {
+    margin-right: 10px; /* Espace entre le champ de date et le bouton */
+    padding: 5px; /* Espace à l'intérieur du champ de date */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 5px; /* Bordures arrondies */
+    width: 200px; /* Largeur du champ de date */
+}
+
+/* CSS pour le bouton de filtrage */
+button {
+    padding: 5px 10px; /* Espace à l'intérieur du bouton */
+    background-color: #007bff; /* Couleur de fond bleue */
+    color: white; /* Couleur du texte blanche */
+    border: none; /* Supprime les bordures par défaut */
+    border-radius: 5px; /* Bordures arrondies */
+    cursor: pointer; /* Pointeur de souris en forme de main lors du survol */
+    transition: background-color 0.3s; /* Transition de couleur de fond douce */
+}
+
+button:hover {
+    background-color: #0056b3; /* Couleur de fond plus foncée lors du survol */
+}
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style du bouton de filtrage par date et du bouton de tri par complexité */
+.filter-container button, .sort-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff; /* Bleu */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-container button:hover, .sort-button:hover {
+    background-color: #0056b3; /* Bleu plus foncé lors du survol */
+}
+
+/* Style de la table */
+.completed-session-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.completed-session-table th, .completed-session-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.completed-session-table th {
+    background-color: #007bff; /* Bleu */
+    color: white;
+}
+
+.completed-session-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.completed-session-table tr:hover {
+    background-color: #ddd;
+}

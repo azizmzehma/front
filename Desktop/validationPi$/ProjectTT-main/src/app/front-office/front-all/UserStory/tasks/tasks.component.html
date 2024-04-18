@@ -1,0 +1,107 @@
+<section class="hero-section" id="section_1">
+    <div class="section-overlay center_about_m"></div>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <h1 class="text-black mb-5">Tasks</h1>
+
+        </div>
+    </div>
+</section>
+
+
+<br>
+<br>
+<div class="container">
+    <div class="row">   
+        <div class="col-sm-9">                
+            <div class="col-sm-12"> 
+                <h1 class="mgt col"> User Story :  {{ TitleuserStory }} </h1> 
+
+                <div class="kanban-board">
+                    <div class="column" cdkDropList #todoList="cdkDropList" id="todoList"
+                        [cdkDropListData]="tasks" [cdkDropListConnectedTo]="[inprogressList, doneList]"
+                        (cdkDropListDropped)="drop($event)">
+                        <h2 class="todo">TO DO</h2>
+                        <div class="task-list">
+                            <div class="task" *ngFor="let task of tasks | filterByStatus:'TO_DO'" cdkDrag [cdkDragData]="task">
+                                <h6>{{ task.title }}</h6>
+                                <p>{{ task.description }}</p>
+                                <button (click)="deleteTask(task.id)">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column" cdkDropList #inprogressList="cdkDropList" id="inprogressList"
+                        [cdkDropListData]="tasks" [cdkDropListConnectedTo]="[todoList, doneList]"
+                        (cdkDropListDropped)="drop($event)">
+                        <h2 class="inprogress">IN PROGRESS</h2>
+                        <div class="task-list">
+                            <div class="task" *ngFor="let task of tasks | filterByStatus:'IN_PROGRESS'" cdkDrag [cdkDragData]="task">
+                                <h6>{{ task.title }}</h6>
+                                <p>{{ task.description }}</p>
+                                <button (click)="deleteTask(task.id)">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column" cdkDropList #doneList="cdkDropList" id="doneList"
+                        [cdkDropListData]="tasks" [cdkDropListConnectedTo]="[todoList, inprogressList]"
+                        (cdkDropListDropped)="drop($event)">
+                        <h2 class="done">DONE</h2>
+                        <div class="task-list">
+                            <div class="task" *ngFor="let task of tasks | filterByStatus:'DONE'" cdkDrag [cdkDragData]="task">
+                                <h6><del>{{ task.title }}</del></h6>
+                                <p><del>{{ task.description }}</del></p>
+                                <button (click)="deleteTask(task.id)">🗑️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="forum-form card">
+                <div class="card-body">
+                    <form class="row g-3" (ngSubmit)="addTask()" [formGroup]="BlocForm">
+                        <fieldset>
+                            <legend>Ajouter une nouvelle Task</legend>
+                            <div class="form-group">
+                                <label for="inputTitle" class="form-label">Title:</label>
+                                <input type="text" class="form-control" formControlName="title">
+                                <div *ngIf="validateField('title')" class="error-message">
+                                    {{ getErrorMessage('title') }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDescription" class="form-label">Description:</label>
+                                <input type="text" class="form-control" formControlName="description">
+                                <div *ngIf="validateField('description')" class="error-message">
+                                    {{ getErrorMessage('description') }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus" class="form-label">Status:</label>
+                                <select class="form-select" formControlName="status">
+                                    <option *ngFor="let status of ['TO_DO', 'IN_PROGRESS', 'DONE']" [value]="status">{{ status }}</option>
+                                </select>
+                                <div *ngIf="validateField('status')" class="error-message">
+                                    {{ getErrorMessage('status') }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputUserStoryId" class="form-label">User Story:</label>
+                                <select class="form-select" formControlName="userstory_id">
+                                    <option *ngFor="let userStory of userStories" [value]="userStory.id">{{ userStory.title }}</option>
+                                </select>
+                                <div *ngIf="validateField('userstory_id')" class="error-message">
+                                    {{ getErrorMessage('userstory_id') }}
+                                </div>
+                            </div>
+                        </fieldset>
+                        <button type="submit" class="btn">Ajouter</button>
+                        <button type="reset" class="btn">Reset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

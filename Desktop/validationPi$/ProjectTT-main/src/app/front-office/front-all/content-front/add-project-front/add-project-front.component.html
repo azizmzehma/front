@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajout de Projet</title>
+</head>
+<body>
+    <section class="hero-section" id="section_1">
+        <div class="section-overlay center_about_m"></div>
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="text-center">
+                <h1 class="text-black mb-5">Ajout Projet</h1>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <h2>Ajouter un nouveau Projet</h2>
+        <form #f="ngForm" (ngSubmit)="add(f)" novalidate>
+            <div>
+                <input type="file" #imageInput style="display: none;" (change)="onImageSelected($event)">
+                <button id="imageInput" type="button" (click)="imageInput.click()">Add Image</button>
+            </div>
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <input type="text" class="form-control" id="title" name="title" [(ngModel)]="project.title" required minlength="4">
+                <div *ngIf="f.controls['title'].errors && (f.controls['title'].dirty || f.controls['title'].touched)" class="text-danger">
+                    Le titre est requis et doit contenir au moins 4 caractères.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" [(ngModel)]="project.description" required minlength="20"></textarea>
+                <div *ngIf="f.controls['description'].errors && (f.controls['description'].dirty || f.controls['description'].touched)" class="text-danger">
+                    La description est requise et doit contenir au moins 20 caractères.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="prototype">Prototype</label>
+                <input type="text" class="form-control" id="prototype" name="prototype" [(ngModel)]="project.prototype" required minlength="4">
+                <div *ngIf="f.controls['prototype'].errors && (f.controls['prototype'].dirty || f.controls['prototype'].touched)" class="text-danger">
+                    Le prototype est requis et doit contenir au moins 4 caractères.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateDebut">Date de début</label>
+                <input type="date" class="form-control" id="dateDebut" name="dateDebut" [(ngModel)]="project.dateDebut"  required>
+            </div>
+            <div class="form-group">
+                <label for="dateFinPrevu">Date de fin prévue</label>
+                <input type="date" class="form-control" id="dateFinPrevu" name="dateFinPrevu" [(ngModel)]="project.dateFinPrevu" required>
+            </div>
+            <div class="form-group">
+                <label for="etatProject">État du Projet</label>
+                <select class="form-control" id="etatProject" name="etatProject" [(ngModel)]="project.etatProject" required>
+                    <option *ngFor="let state of etatValues" [value]="state">{{ state }}</option>
+                </select>
+            </div>
+
+            <button type="submit" [disabled]="f.invalid" class="btn btn-primary">ajouter</button>
+            <div *ngIf="f.invalid && (f.dirty || f.touched)" class="text-danger mt-2">
+                Veuillez remplir tous les champs requis.
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<main id="main" class="main">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add User Story</h5>
+  
+        <!-- Multi Columns Form -->
+        <form class="row g-3" (ngSubmit)="UpdateTask()" [formGroup]="BlocForm">
+          <div class="col-md-12">
+            <label for="inputTitle" class="form-label">Title:</label>
+            <input type="text" class="form-control" formControlName="title">
+            <div *ngIf="validateField('title')" class="error-message">
+                {{ getErrorMessage('title') }}
+              </div>
+          </div>
+          <div class="col-md-12">
+            <label for="inputDescription" class="form-label">Description:</label>
+            <textarea class="form-control" rows="3" formControlName="description"></textarea>
+            <div *ngIf="validateField('description')" class="error-message">
+                {{ getErrorMessage('description') }}
+              </div>
+          </div>
+          <div class="col-md-12">
+            <label for="inputStatus" class="form-label">Status:</label>
+            <select class="form-select" formControlName="status">
+              <option *ngFor="let status of ['TO_DO', 'IN_PROGRESS', 'DONE']" [value]="status">{{ status }}</option>
+            </select>
+            <div *ngIf="validateField('status')" class="error-message">
+              {{ getErrorMessage('status') }}
+            </div>
+          </div>
+         
+         
+          
+          
+          
+                  
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </form><!-- End Multi Columns Form -->
+  
+      </div>
+    </div>
+  </main>
+  

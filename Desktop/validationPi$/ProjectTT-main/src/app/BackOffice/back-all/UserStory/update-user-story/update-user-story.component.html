@@ -1,0 +1,50 @@
+<main id="main" class="main">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add User Story</h5>
+  
+        <!-- Multi Columns Form -->
+        <form class="row g-3" (ngSubmit)="UpdateUserStory()" [formGroup]="BlocForm">
+          <div class="col-md-12">
+            <label for="inputTitle" class="form-label">Title:</label>
+            <input type="text" class="form-control" formControlName="title">
+            <div *ngIf="validateField('title')" class="error-message">
+                {{ getErrorMessage('title') }}
+              </div>
+          </div>
+          <div class="col-md-12">
+            <label for="inputDescription" class="form-label">Description:</label>
+            <textarea class="form-control" rows="3" formControlName="description"></textarea>
+            <div *ngIf="validateField('description')" class="error-message">
+                {{ getErrorMessage('description') }}
+              </div>
+          </div>
+          <div class="col-md-12">
+            <label for="inputAcceptance_criteria" class="form-label">Acceptance Criteria:</label>
+            <textarea class="form-control" rows="3" formControlName="acceptance_criteria"></textarea>
+            <div *ngIf="validateField('acceptance_criteria')" class="error-message">
+                {{ getErrorMessage('acceptance_criteria') }}
+              </div>
+          </div>
+          <div class="col-md-6">
+            <label for="inputPriority" class="form-label">Priority:</label>
+            <input type="number" class="form-control" formControlName="priority">
+            <div *ngIf="validateField('priority')" class="error-message">
+                {{ getErrorMessage('priority') }}
+              </div>
+          </div>
+          
+         
+          
+          
+                  
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </form><!-- End Multi Columns Form -->
+  
+      </div>
+    </div>
+  </main>
+  

@@ -1,0 +1,29 @@
+<section class="hero-section" id="section_1">
+  <div class="section-overlay center_about_m"></div>
+  <div class="container d-flex justify-content-center align-items-center">
+      <div class="text-center">
+          <h1 class="text-black mb-5">Ajouter Session</h1>
+      </div>
+  </div>
+ 
+</section>
+
+<div class="container">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="userEmail">User Email:</label>
+      <select id="userEmail" class="form-control" [(ngModel)]="sessionData.userEmail" name="userEmail" required>
+        <option *ngFor="let email of userEmails" [value]="email">{{ email }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="taskTitle">Task Title:</label> <!-- Utilisation de taskTitle -->
+      <select id="taskTitle" class="form-control" [(ngModel)]="sessionData.taskTitle" name="taskTitle" required> <!-- Utilisation de taskTitle -->
+        <option *ngFor="let title of taskTitles" [value]="title">{{ title }}</option> <!-- Utilisation de taskTitles -->
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Session</button>
+  </form>
+</div>

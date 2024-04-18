@@ -1,0 +1,90 @@
+<section class="hero-section" id="section_1">
+    <div class="section-overlay center_about_m"></div>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <h1 class="text-black mb-5">User Story</h1>
+            <p class="text-black">Explorez les histoires d'utilisateurs pour comprendre leurs besoins et leurs objectifs.</p>
+        </div>
+    </div>
+   
+</section>
+
+
+
+
+<div class="containerr">
+    <div class="row">
+        <div class="col-sm-8">                
+            <div class="col-sm-12">
+                <h1>User Stories</h1>
+                <input class="form-control my-3" [(ngModel)]="searchKeyword" placeholder="Rechercher des UserStories" (keyup)="searchUserStories()" />
+                <div class="row">
+                <div class="col-md-4" *ngFor="let story of userStories">
+                    <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="card-title" [routerLink]="['/tasks', story.id]">{{story.title}}</h5>
+                            <p class="card-text">{{story.description}}</p>
+                        </div>
+                        <button (click)="deleteUserStory(story.id)">🗑️</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="forum-form card">
+                <div class="card-body">
+                <form class="row g-3" (ngSubmit)="addNewUserStory()" [formGroup]="BlocForm">
+                    <fieldset>
+                    <legend>Ajouter une nouvelle UserStory</legend>
+                    <div class="form-group">
+                        <input id="title" type="text" class="form-control" formControlName="title" placeholder="title">
+                        <div *ngIf="validateField('title')" class="error-message">
+                        {{ getErrorMessage('title') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control"  formControlName="description" placeholder="description">
+                        <div *ngIf="validateField('description')" class="error-message">
+                            {{ getErrorMessage('description') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control"  formControlName="acceptance_criteria" placeholder="acceptance criteria">
+                        <div *ngIf="validateField('acceptance_criteria')" class="error-message">
+                            {{ getErrorMessage('acceptance_criteria') }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" formControlName="priority" placeholder="priority">
+                            <div *ngIf="validateField('priority')" class="error-message">
+                                {{ getErrorMessage('priority') }}
+                            </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <select class="form-select" formControlName="assigned_to">
+                            <option value="" disabled selected>Choose a user...</option>
+                            <option *ngFor="let user of users" [value]="user.id">{{ user.firstName }}</option>
+                        </select>
+                        <div *ngIf="validateField('assigned_to')" class="error-message">
+                            {{ getErrorMessage('assigned_to') }}
+                        </div>
+                    </div>
+                    
+                    </fieldset>
+                    <button type="submit" class="btn ">Ajouter</button>
+                    <button type="reset" class="btn ">Reset</button>          
+                </form>
+                </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  

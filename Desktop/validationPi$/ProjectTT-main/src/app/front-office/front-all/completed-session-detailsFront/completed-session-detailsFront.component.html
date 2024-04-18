@@ -1,0 +1,64 @@
+<section class="hero-section" id="section_1">
+    <div class="section-overlay center_about_m"></div>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <h1 class="text-black mb-5">Historique de Session</h1>
+        </div>
+    </div>
+   
+  </section>
+
+<div>
+    <h2>Completed Session Details</h2>
+
+    <!-- Zone de filtrage -->
+    <div class="filter-container">
+        <label for="dateFilter">Filter by date:</label>
+        <input type="date" id="dateFilter" [(ngModel)]="selectedDate" />
+        <button (click)="filterByDate()">Filter</button>
+
+        <!-- Bouton de tri par complexité -->
+        <button class="sort-button" (click)="sortByComplexity()">
+            filtrage avec Complexity {{ ascending ? '(Ascending)' : '(Descending)' }}
+        </button>
+        <button (click)="exportToExcel()">Exporter en Excel</button>
+    </div>
+
+    <!-- Table des détails des sessions -->
+    <table class="completed-session-table">
+        <thead>
+            <tr>
+                <th>User Email</th>
+                <th>Task Name</th>
+                <th>End Time</th>
+                <th>Complexity</th>
+                <th>imprimer pdf</th> 
+                <th>Partage twitter</th> <!-- Nouvelle colonne pour le bouton "PDF" -->
+                <!-- Nouvelle colonne pour le bouton "PDF" -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let detail of filteredSessionDetails">
+                <td>{{ detail.userEmail }}</td>
+                <td>{{ detail.taskTitle }}</td>
+                <td>{{ detail.endTime | date:'short' }}</td>
+                <td>{{ detail.complexity }}</td>
+                <!-- Bouton "PDF" pour chaque ligne -->
+                <td>
+                    <button (click)="generatePDF(detail)">PDF</button>
+
+                </td>
+               
+                <td>
+                    <button (click)="shareOnTwitter(detail)">Partage Twitter</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Message si aucun détail trouvé -->
+    <div *ngIf="!filteredSessionDetails || !filteredSessionDetails.length">
+        <p>No completed session details found.</p>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+#section_1 {
+    height: 300px; /* Réglez la hauteur souhaitée en pixels */
+  }
+  
+
+  @media (max-width: 768px) {
+    #section_1 {
+      height: 200px; /* Hauteur réduite pour les écrans de 768px de largeur ou moins */
+    }
+  }
+  

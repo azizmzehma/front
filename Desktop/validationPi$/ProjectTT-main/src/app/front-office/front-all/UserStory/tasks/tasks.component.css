@@ -1,0 +1,104 @@
+
+.center_about_m {
+    background-image: url("./1f68f84b53199df9cae4b253225eae63.png");
+    background-size: cover; /* This ensureogle-Tasks-–-Your-Personal-Task-Managers the image covers the entire container */
+    background-position: center; /* This centers the image within the container */
+  }
+
+
+
+ /* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.kanban-board {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.task-list {
+  margin-top: 10px;
+}
+
+.task {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* Styles spécifiques pour chaque statut */
+.task[data-status="TO_DO"] {
+  border-left: 4px solid #ff6347; /* Rouge */
+}
+
+.task[data-status="IN_PROGRESS"] {
+  border-left: 4px solid #ffa500; /* Orange */
+}
+
+.task[data-status="DONE"] {
+  border-left: 4px solid #32cd32; /* Vert */
+}
+
+.forum-form {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  margin-top: 50px;
+}
+
+
+.forum-form .card-body {
+padding: 40px;
+}
+
+
+
+.error-message {
+  color: red;
+}
+
+.todo{
+  color: red;
+}
+.inprogress{
+  color: #ffa500;
+}
+
+.done{
+  color: #32cd32;
+}
+
+
+.card-text {
+  color: #6c757d; /* Couleur du texte */
+}
+
+#section_1 {
+  height: 300px; /* Réglez la hauteur souhaitée en pixels */
+}
+
+
+@media (max-width: 768px) {
+  #section_1 {
+    height: 200px; /* Hauteur réduite pour les écrans de 768px de largeur ou moins */
+  }
+}

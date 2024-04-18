@@ -1,0 +1,83 @@
+<section class="hero-section" id="section_1">
+  <div class="section-overlay center_about_m"></div>
+  <div class="container d-flex justify-content-center align-items-center">
+      <div class="text-center">
+          <h1 class="text-black mb-5">Cards</h1>
+      </div>
+  </div>
+ 
+</section>
+
+
+<div class="container">
+  
+  <div class="header">
+    <h2><span class="title-prefix">Liste des</span> Cartes</h2>
+  </div>
+  <div class="button-container">
+    <button class="button-73" mat-button color="primary" (click)="showAddForm()">Ajouter</button>
+  </div>
+
+  <div class="content">
+    <!-- Boutons existants -->
+    <label class="switch-button" for="switch">
+      <div class="switch-outer">
+        <input id="switch" type="checkbox" [(ngModel)]="automaticCreation" (change)="toggleAutomaticCreation()">
+        <div class="button">
+          <span class="button-toggle"></span>
+          <span class="button-indicator"></span>
+        </div>
+      </div>
+      Création Automatique
+    </label>
+
+    <!-- Affichage conditionnel du formulaire en fonction de la création automatique -->
+    <div class="card-form" *ngIf="showForm && !automaticCreation">
+      <form>
+        <mat-form-field>
+          <input matInput placeholder="Nom de la carte" [(ngModel)]="selectedCard.name" name="name" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Valeur de complexité" [(ngModel)]="selectedCard.complexityValue" name="complexityValue" required>
+        </mat-form-field>
+
+        <!-- Retirer la mat-slide-toggle pour la création manuelle -->
+        <button mat-raised-button color="primary" (click)="addCard()">Ajouter Carte</button>
+      </form>
+    </div>
+
+    <!-- Affichage des boutons pour la création automatique -->
+    <div *ngIf="automaticCreation">
+      <button class="button-8" mat-button color="primary" (click)="toggleHelpText('tShirt')">T-Shirt</button>
+      <button class="button-8" mat-button color="primary" (click)="createTShirtCards()">Créer Cartes T-Shirt</button>
+      <button class="button-8" mat-button color="primary" (click)="toggleHelpText('tShirtNumbers')">T-Shirt & Numbers</button>
+      <button class="button-8" mat-button color="primary" (click)="createTShirtNumberCards()">Créer Cartes T-Shirt & Numbers</button>
+    </div>
+
+    <div class="help-text">
+      <p>{{ helpText }}</p>
+    </div>
+
+    <div class="card-container">
+      <div *ngFor="let card of pokerCards" class="card">
+        <div class="card-content">
+          <h3>{{ card.name }}</h3>
+          <p>ID: {{ card.id }}</p> <!-- Ajout pour afficher l'ID de la carte -->
+
+          <p>Complexité: {{ card.complexityValue }} 🌟</p>
+        </div>
+        <div class="card-actions">
+          <button mat-icon-button color="accent" (click)="selectCard(card)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteCard(card)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ... reste du contenu ... -->
+  </div>
+</div>

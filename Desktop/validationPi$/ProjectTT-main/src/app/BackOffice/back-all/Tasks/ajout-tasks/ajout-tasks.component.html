@@ -1,0 +1,55 @@
+<main id="main" class="main">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add Task</h5>
+  
+        <!-- Multi Columns Form -->
+        <form class="row g-3" (ngSubmit)="addTask()" [formGroup]="BlocForm">
+          <div class="col-md-12">
+            <label for="inputTitle" class="form-label">Title:</label>
+            <input type="text" class="form-control" formControlName="title">
+            <div *ngIf="validateField('title')" class="error-message">
+                {{ getErrorMessage('title') }}
+              </div>
+          </div>
+          <div class="col-md-12">
+            <label for="inputTitle" class="form-label">Description:</label>
+            <input type="text" class="form-control" formControlName="description">
+            <div *ngIf="validateField('description')" class="error-message">
+                {{ getErrorMessage('description') }}
+              </div>
+          </div>
+          <div class="col-md-12">
+            <label for="inputStatus" class="form-label">Status:</label>
+            <select class="form-select" formControlName="status">
+              <option *ngFor="let status of ['TO_DO', 'IN_PROGRESS', 'DONE']" [value]="status">{{ status }}</option>
+            </select>
+            <div *ngIf="validateField('status')" class="error-message">
+              {{ getErrorMessage('status') }}
+            </div>
+          </div>
+          
+         
+          
+          <div class="col-md-12">
+            <label for="inputuserStoryId" class="form-label">User Story:</label>
+            <select class="form-select" formControlName="userstory_id">
+              <option *ngFor="let userStory of userStories" [value]="userStory.id">{{ userStory.title }}</option>
+            </select>
+            <div *ngIf="validateField('userstory_id')" class="error-message">
+              {{ getErrorMessage('userstory_id') }}
+            </div>
+          </div>
+          
+          
+                  
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </form><!-- End Multi Columns Form -->
+  
+      </div>
+    </div>
+  </main>
+  

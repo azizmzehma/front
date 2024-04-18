@@ -1,0 +1,70 @@
+.card {
+    background-color: #f5f5f5; /* Couleur de fond des cartes */
+  }
+  
+  .card-title {
+    color: #cc6019; /* Couleur du titre */
+  }
+  
+  .card-text {
+    color: #6c757d; /* Couleur du texte */
+  }
+  .text-muted {
+    color: #0000FF; /* Couleur du texte */
+    text-decoration: underline; /* Texte souligné */
+  }
+  
+  
+  .btn-danger {
+    background-color: #dc3545; /* Couleur du bouton */
+  }
+  
+
+  
+  .error-message {
+    color: red;
+  }
+
+  
+  .forum-form {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    margin-top: 50px;
+  }
+
+  
+.forum-form .card-body {
+  padding: 40px;
+}
+
+
+
+.center_about_m {
+  background-image: url("./ss.png");
+  background-size: cover; /* This ensures the image covers the entire container */
+  background-position: center; /* This centers the image within the container */
+}
+
+/* CSS */
+.btn:hover, .btn:focus, .btn:active {
+  color: orange;
+}
+
+
+/* CSS */
+.containerr {
+  border: 1px solid black;
+  padding: 90px;
+  border-radius: 5px;
+}
+#section_1 {
+  height: 300px; /* Réglez la hauteur souhaitée en pixels */
+}
+
+
+@media (max-width: 768px) {
+  #section_1 {
+    height: 200px; /* Hauteur réduite pour les écrans de 768px de largeur ou moins */
+  }
+}

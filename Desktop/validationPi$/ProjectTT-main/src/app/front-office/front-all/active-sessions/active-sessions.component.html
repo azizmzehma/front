@@ -1,0 +1,12 @@
+<!-- active-sessions.component.html -->
+<div *ngIf="activeSessions.length > 0; else noSessions">
+  <h2>Sessions Actives</h2>
+  <ul>
+    <li *ngFor="let session of activeSessions">
+      Email: {{ session.userEmail }}, Tâche: {{ session.taskTitle }}, Fin: {{ session.endTime }}
+    </li>
+  </ul>
+</div>
+<ng-template #noSessions>
+  <p>Aucune session active.</p>
+</ng-template>

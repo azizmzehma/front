@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed layout-compact"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <!-- Title -->
+    <title>Tables - Basic Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet" />
+
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+
+    <!-- Config -->
+    <script src="../assets/js/config.js"></script>
+  </head>
+  <body>
+    <div class="card">
+        <h5 class="card-header">List of Tasks</h5>
+        <div class="row">
+          <div class="col-md-6 col-12 mb-50">
+            <div class="d-flex justify-content-between align-items-center">
+              <label class="d-flex align-items-center">Search
+                <input type="search" placeholder="Search" class="form-control ml-25" [(ngModel)]="searchKeyword"(input)="searchUserStories()" />
+              </label>
+            </div>
+          </div>
+          <div class="col-md-6 col-12 mb-50 text-md-end">
+            <button class="btn btn-primary" rippleEffect routerLink="/admin/addTasks">
+              <i data-feather="plus" class="mr-0 mr-sm-1" alt="Add icon"></i>
+              <span class="d-none d-sm-inline-block">Add New Task</span>
+            </button>
+          </div>
+        </div>
+        <div class="table-responsive text-nowrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>User Story</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+              <tr *ngFor="let task of tasks | paginate: { itemsPerPage: 3, currentPage: p }">
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>
+                  <span class="badge badge-pill badge-light mr-1" [style.color]="'orange'" *ngIf="task.status === 'IN_PROGRESS'"> {{ task.status }} </span>
+                  <span class="badge badge-pill badge-light mr-1" [style.color]="'red'" *ngIf="task.status === 'TO_DO'"> {{ task.status }} </span>
+                  <span  class="badge badge-pill badge-light mr-1" [style.color]="'green'" *ngIf="task.status === 'DONE'"> {{ task.status }} </span>
+              </td>
+                <td>{{ task.userstory_id?.title }}</td>   
+                <td>
+                  <i data-feather="edit" class="btn  btn-success"  [routerLink]="['../updateTasks', task.id]" alt="Edit icon">Update</i>
+                  <i data-feather="trash-2" class="btn  btn-danger" (click)="deleteUserStory(task.id)" alt="Delete icon">Delete</i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <pagination-controls class="my-4" (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+          <h5 class="card-header">Task Statistics</h5>
+
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <div class="chart-container">
+              <canvas #taskStatsChart></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
+</html>

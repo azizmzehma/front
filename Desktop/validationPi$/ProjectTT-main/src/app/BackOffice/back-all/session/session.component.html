@@ -1,0 +1,28 @@
+<div class="page-content">
+  <div class="text-center mb-4">
+    <h1>La Liste des Sessions</h1>
+    <a   routerLink="/admin/sessioncreate" class="btn btn-primary">Ajout session</a>
+    <button class="btn btn-primary ml-2" (click)="exportToExcel()">Exporter vers Excel</button>
+  </div>
+  
+  <div class="input-group mb-3">
+    <input type="text" class="form-control search-input" placeholder="Recherche" [(ngModel)]="searchText" (input)="search()">
+  </div>
+
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div *ngFor="let session of filteredSessions" class="col-lg-4 col-md-6 mb-4" [ngClass]="getBackgroundColor(session.endTime)">
+        <div class="card h-100">
+          <div class="card-body">
+            <p class="card-text"><strong>Session ID:</strong> {{ session.sessionId }}</p> <!-- Utilisation de sessionId -->
+            <p class="card-text"><strong>Task Name:</strong> {{ session.taskTitle }}</p>
+            <p class="card-text"><strong>User Email:</strong> {{ session.userEmail }}</p>
+            <p class="card-text"><strong>End Time:</strong> {{ session.endTime | date: 'medium' }}</p>
+            <!-- Bouton "Accéder à la session" -->
+            <button *ngIf="getBackgroundColor(session.endTime) === 'not-expired'" class="btn btn-acceder" (click)="accessSession(session.sessionId)">Accéder à la session</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
