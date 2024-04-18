@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+.file-image {
+  width: 100%; /* Définit la largeur de toutes les images à 100% */
+  height: auto; /* Pour conserver le ratio hauteur/largeur */
+  transition: transform 0.3s ease; /* Ajoute une transition fluide lorsqu'on survole l'image */
+}
+
+.file-image:hover {
+  transform: scale(1.1); /* Applique un effet de zoom de 10% lorsqu'on survole l'image */
+}
