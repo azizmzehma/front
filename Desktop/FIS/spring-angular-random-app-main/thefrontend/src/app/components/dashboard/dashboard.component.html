@@ -1,0 +1,20 @@
+<button class="btn btn-primary mb-3" [routerLink]="['/user/advanced-dashboard']">
+  Voir courbe avancée 📈
+</button>
+
+<h2>📊 Logs récents</h2>
+<ul class="list-group">
+  <li *ngFor="let log of logs" class="list-group-item" [ngClass]="log.level | logLevelClass">
+    <strong>{{ log.level }}</strong> — {{ log.message }}
+    <small class="text-muted float-end">{{ log.timestamp }}</small><br />
+    <span class="text-muted">Service: {{ log.service }}</span>
+  </li>
+</ul>
+<div class="mt-4 d-flex gap-2">
+  <button class="btn btn-outline-primary" [routerLink]="['/user/advanced-dashboard']">
+    📉 Courbe de trading
+  </button>
+  <button class="btn btn-outline-success" [routerLink]="['/user/dashboard-pro']">
+    📊 Dashboard Pro
+  </button>
+</div>
