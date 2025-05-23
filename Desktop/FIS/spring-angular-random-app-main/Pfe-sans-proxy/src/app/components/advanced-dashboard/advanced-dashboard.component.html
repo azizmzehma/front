@@ -1,0 +1,25 @@
+<div class="container mt-4">
+
+  <!-- Titre principal -->
+  <div class="mb-4 text-center">
+    <h2 class="fw-bold text-primary">📈 Courbe de performance (Style Trading)</h2>
+    <p class="text-muted mb-0">
+      Visualisation de l’évolution des logs collectés sur une période donnée.
+    </p>
+    <p class="text-secondary small">
+      Dernière mise à jour : {{ currentDate | date: 'dd/MM/yyyy à HH:mm' }} &nbsp;|&nbsp;
+      Intervalle : 5 minutes &nbsp;|&nbsp;
+      Unité : nombre de logs
+    </p>
+  </div>
+
+  <!-- Graphique dans une carte propre -->
+  <div class="card shadow-sm p-4">
+    <canvas baseChart
+          
+            [data]="lineChartData"
+            [options]="lineChartOptions">
+    </canvas>
+  </div>
+
+</div>

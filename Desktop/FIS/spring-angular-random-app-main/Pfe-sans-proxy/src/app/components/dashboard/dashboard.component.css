@@ -1,0 +1,14 @@
+.log-info {
+  border-left: 4px solid #0d6efd;
+  background-color: #e7f1ff;
+}
+
+.log-error {
+  border-left: 4px solid #dc3545;
+  background-color: #f8d7da;
+}
+
+.log-warning {
+  border-left: 4px solid #ffc107;
+  background-color: #fff3cd;
+}

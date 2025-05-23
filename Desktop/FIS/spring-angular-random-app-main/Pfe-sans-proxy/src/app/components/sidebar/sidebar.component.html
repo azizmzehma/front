@@ -1,0 +1,36 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h4>FIS Dashboard</h4>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a routerLink="/user/home" class="nav-link">
+      <i class="bi bi-house-door-fill"></i> Accueil
+    </a>
+
+    <a routerLink="/user/dashboard" class="nav-link">
+      <i class="bi bi-graph-up"></i> Dashboard
+    </a>
+
+    <!-- Élément avec sous-menu -->
+    <div class="submenu-container">
+      <input type="checkbox" id="analytics-toggle" hidden>
+      <label for="analytics-toggle" class="nav-link submenu-toggle">
+        <i class="bi bi-bar-chart-line"></i> Analytique
+        <i class="bi bi-chevron-down toggle-icon"></i>
+      </label>
+
+      <div class="submenu">
+  <a routerLink="/user/advanced-dashboard" class="nav-link small">📈 Courbe</a>
+  <a routerLink="/user/dashboard-pro" class="nav-link small">📊 Dashboard</a>
+  <a routerLink="/user/monitoring" class="nav-link small">🧭 Monitoring Board</a>
+  <a routerLink="/user/dynamic-dashboard" class="nav-link small">🧪 Dashboard dynamique</a> <!-- ✅ Ajouté -->
+</div>
+
+
+  <div class="sidebar-footer mt-auto">
+    <button class="btn-logout" (click)="logout()">
+      <i class="bi bi-box-arrow-right"></i> Logout
+    </button>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="container py-4">
+
+  <!-- Bouton principal -->
+  <div class="text-end mb-3">
+    <button class="btn btn-primary btn-lg shadow-sm me-2" [routerLink]="['/user/advanced-dashboard']">
+      📈 Voir courbe avancée
+    </button>
+
+    <!-- Bouton Export Excel -->
+    <button class="btn btn-outline-dark btn-lg shadow-sm" (click)="exportToExcel()">
+      📤 Exporter en Excel
+    </button>
+  </div>
+
+  <!-- Titre section -->
+  <h3 class="mb-3 fw-bold text-secondary">📊 Logs récents</h3>
+
+  <!-- Tableau des logs -->
+  <div class="table-responsive shadow-sm">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">Niveau</th>
+          <th scope="col">Message</th>
+          <th scope="col">Date & Heure</th>
+          <th scope="col">Service</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of paginatedLogs" [ngClass]="log.level | logLevelClass">
+          <td><strong>{{ log.level }}</strong></td>
+          <td>{{ log.message }}</td>
+          <td><small class="text-muted">{{ log.timestamp }}</small></td>
+          <td><small>{{ log.service }}</small></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination professionnelle -->
+  <nav *ngIf="totalPages > 1" class="mt-4 d-flex justify-content-center">
+    <ul class="pagination pagination-sm flex-wrap">
+      <!-- Précédent -->
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="changePage(currentPage - 1)">← Précédent</button>
+      </li>
+
+      <!-- Première page -->
+      <li class="page-item" [class.active]="currentPage === 1">
+        <button class="page-link" (click)="changePage(1)">1</button>
+      </li>
+
+      <!-- Ellipses avant -->
+      <li class="page-item disabled" *ngIf="currentPage > 4">
+        <span class="page-link">…</span>
+      </li>
+
+      <!-- Pages autour de la page courante -->
+      <ng-container *ngFor="let i of [].constructor(totalPages); let index = index">
+        <ng-container *ngIf="index + 1 > currentPage - 2 && index + 1 < currentPage + 2 && index + 1 !== 1 && index + 1 !== totalPages">
+          <li class="page-item" [class.active]="currentPage === index + 1">
+            <button class="page-link" (click)="changePage(index + 1)">{{ index + 1 }}</button>
+          </li>
+        </ng-container>
+      </ng-container>
+
+      <!-- Ellipses après -->
+      <li class="page-item disabled" *ngIf="currentPage < totalPages - 3">
+        <span class="page-link">…</span>
+      </li>
+
+      <!-- Dernière page -->
+      <li class="page-item" *ngIf="totalPages > 1">
+        <button class="page-link" (click)="changePage(totalPages)" [class.active]="currentPage === totalPages">{{ totalPages }}</button>
+      </li>
+
+      <!-- Suivant -->
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="changePage(currentPage + 1)">Suivant →</button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Boutons secondaires -->
+  
+</div>
